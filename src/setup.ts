@@ -1,5 +1,5 @@
 import RED_BRICK_IMAGE from "./images/brick-red.png";
-import BLUE_BRICK_IMAGE from "/images/brick-blue.png";
+import BLUE_BRICK_IMAGE from "./images/brick-blue.png";
 import GREEN_BRICK_IMAGE from "./images/brick-green.png";
 import YELLOW_BRICK_IMAGE from "./images/brick-yellow.png";
 import PURPLE_BRICK_IMAGE from "./images/brick-purple.png";

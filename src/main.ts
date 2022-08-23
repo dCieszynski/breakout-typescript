@@ -4,8 +4,8 @@ import { Brick } from "./sprites/Brick";
 import { Paddle } from "./sprites/Paddle";
 
 // Images
-import PADDLE_IMAGE from "../src/images/paddle.png";
-import BALL_IMAGE from "../src/images/ball.png";
+import PADDLE_IMAGE from "./images/paddle.png";
+import BALL_IMAGE from "./images/ball.png";
 // Level and colors
 import {
   PADDLE_SPEED,
@@ -17,6 +17,9 @@ import {
   BALL_STARTX,
   BALL_STARTY,
 } from "./setup";
+
+// Helpers
+import { createBricks } from "./helpers";
 
 let gameOver = false;
 let score = 0;
@@ -33,12 +36,24 @@ function setGameWin(view: CanvasView) {
 
 function gameLoop(
   view: CanvasView,
-  bricks: Brick[],
-  paddle: Paddle,
-  ball: Ball
-) {}
+  bricks: Brick[]
+  //   paddle: Paddle,
+  //   ball: Ball
+) {
+  view.clear();
+  view.drawBricks(bricks);
+  requestAnimationFrame(() => gameLoop(view, bricks));
+}
 
-function startGame(view: CanvasView) {}
+function startGame(view: CanvasView) {
+  // Rest displays
+  score = 0;
+  view.drawInfo("");
+  view.drawScore(0);
+  const bricks = createBricks();
+
+  gameLoop(view, bricks);
+}
 
 const view = new CanvasView("#playField");
 view.initStartButton(startGame);
